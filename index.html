@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+  <head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+    <title>Independent Study</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Click the button to get your coordinates.</h1>
+
+    <button onclick="getLocation()">Update Location</button>
+
+    <p id="location"></p>
+
+    <script>
+      var locDisp = document.getElementById("location");
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+          locDisp.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+          locDisp.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+      }
+    
+    </script>
+
+  </body>
+</html>
