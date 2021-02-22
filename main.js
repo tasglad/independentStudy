@@ -1,5 +1,17 @@
 //get api key from external file
-//module.import api_key from './keys.js';
+//import { api_key } from "./keys.js"; 
+//import { api_key } from "keys.js";
+// function include(file) { 
+  
+//   var script  = document.createElement('script'); 
+//   script.src  = file; 
+//   script.type = 'text/javascript'; 
+//   script.defer = true; 
+  
+//   document.getElementsByTagName('head').item(0).appendChild(script); 
+// } 
+// include("keys.js");
+// console.log(api_key);
 
 var locDisp = document.getElementById("location");
 
@@ -17,11 +29,13 @@ function showPosition(position) {
 
   //get image
   // var latlon = position.coords.latitude + "," + position.coords.longitude;
-  // var map_img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+
-  // latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+  // var api_key = "AIzaSyCaWJYwsqYbug3-TEM7cqYlEhvVwECGpjY";
+  // var map_img_url = "https://www.google.com/maps/embed/v1/place?key=" + api_key+
+  // "&center="+latlon+"&zoom=14";
 
   // //update map image
   // document.getElementById("mapholder").innerHTML = "<img src='"+map_img_url+"'>";
+
 }
 
 //error codes for getting location
