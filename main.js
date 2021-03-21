@@ -1,20 +1,71 @@
-//get api key from external file
-//import { api_key } from "./keys.js"; 
-//import { api_key } from "keys.js";
-// function include(file) { 
-  
-//   var script  = document.createElement('script'); 
-//   script.src  = file; 
-//   script.type = 'text/javascript'; 
-//   script.defer = true; 
-  
-//   document.getElementsByTagName('head').item(0).appendChild(script); 
-// } 
-// include("keys.js");
-// console.log(api_key);
 
+//--------SET-UP TOUCH TARGET-------------------------
+var block = {
+  start: function(event) {
+    console.log('start', event);
+  },
+
+  change: function(force, event) {
+    // event.preventDefault();
+    this.style.width = Pressure.map(force, 0, 1, 200, 300) + 'px';
+    this.innerHTML = force;
+    console.log('change', force);
+  },
+
+  startDeepPress: function(event) {
+    console.log('start deep press', event);
+    this.style.backgroundColor = '#FF0040';
+  },
+
+  endDeepPress: function() {
+    console.log('end deep press');
+    this.style.backgroundColor = '#0080FF';
+  },
+
+  end: function() {
+    console.log('end');
+    this.style.width = '200px';
+    this.innerHTML = 0;
+  },
+
+  unsupported: function() {
+    console.log(this);
+    this.innerHTML = 'Your device / browser does not support this :(';
+  }
+}
+
+Pressure.set(document.querySelectorAll('#el1'), block, {polyfill: false});
+
+
+//get api key from external file
+let api_key = getKey();  
+
+//--------SET-UP GPS BUTTON-------------------------
 var locDisp = document.getElementById("location");
 
+
+//--------SET-UP MAP--------------------------------
+
+// Create the script tag, set the appropriate attributes
+var script = document.createElement('script');
+script.src = 'https://maps.googleapis.com/maps/api/js?key='+api_key+'&callback=initMap';
+script.async = true;
+
+// Attach your callback function to the `window` object
+window.initMap = function() {
+  // JS API is loaded and available
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+};
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);
+
+
+
+//get users coordinates
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition,showError);
@@ -23,18 +74,10 @@ function getLocation() {
   }
 }
 
+//show coordinates on screen
 function showPosition(position) {
   locDisp.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
-
-  //get image
-  // var latlon = position.coords.latitude + "," + position.coords.longitude;
-  // var api_key = "AIzaSyCaWJYwsqYbug3-TEM7cqYlEhvVwECGpjY";
-  // var map_img_url = "https://www.google.com/maps/embed/v1/place?key=" + api_key+
-  // "&center="+latlon+"&zoom=14";
-
-  // //update map image
-  // document.getElementById("mapholder").innerHTML = "<img src='"+map_img_url+"'>";
 
 }
 
