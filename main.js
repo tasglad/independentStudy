@@ -37,32 +37,22 @@ var block = {
 Pressure.set(document.querySelectorAll('#el1'), block, {polyfill: false});
 
 
-//get api key from external file
-let api_key = getKey();  
-
 //--------SET-UP GPS BUTTON-------------------------
 var locDisp = document.getElementById("location");
 
 
 //--------SET-UP MAP--------------------------------
+//get Mapbox api key from external file
+let api_key = getKey();
+mapboxgl.accessToken = api_key;  
 
-// Create the script tag, set the appropriate attributes
-var script = document.createElement('script');
-script.src = 'https://maps.googleapis.com/maps/api/js?key='+api_key+'&callback=initMap';
-script.async = true;
-
-// Attach your callback function to the `window` object
-window.initMap = function() {
-  // JS API is loaded and available
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+//call mapbox to create map
+var map = new mapboxgl.Map({
+  container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  center: [-74.5, 40], // starting position [lng, lat]
+  zoom: 9 // starting zoom
   });
-};
-
-// Append the 'script' element to 'head'
-document.head.appendChild(script);
-
 
 
 //get users coordinates
@@ -76,9 +66,18 @@ function getLocation() {
 
 //show coordinates on screen
 function showPosition(position) {
-  locDisp.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
+  //get lat and long and show on screen
+  let long = position.coords.longitude;
+  let lat = position.coords.latitude;
+  locDisp.innerHTML = "Latitude: " + lat + "<br>Longitude: " + long;
 
+  //center map on this position
+  map.flyTo({
+    center: [
+    long, lat
+    ],
+    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+    });
 }
 
 //error codes for getting location
