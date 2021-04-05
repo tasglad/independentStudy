@@ -3,9 +3,9 @@
 <html lang = "en">
   <head>
     <meta charset="utf-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
-    <title>Independent Study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+    <title>Know your Stress</title>
     <link rel="stylesheet" href="style.css" />
     
     <!--MapBox reference-->
@@ -16,30 +16,29 @@
 
   <body>
     
-    <!--Accel-->
-    <h1>Click button to allow shaking.</h1>
-    <button onclick="getAccel()">Start Accel</button>
-    <p id="accelMessage"></p>
-    <p id="accelVar"></p>
+    <h1>Know Your Stress</h1>
+    <p>This is a webapp that will help you better understand the places you get stressed at and the places where you feel calm.</p>
+    <p>Property of Hannon Psychology. For more info contact Daniel Hannon at:</p>
+    <p><a href = "mailto: dan@hannonpsychology.com">dan@hannonpsychology.com</a></p>
+    <p><a href = "http://www.hannonpsychology.com/">Hannon Pscychology Website</a></p>
+    <p>(603) 328-5926</p>
+
+    <div class = "home-buttons">
+      <br>
+      <a href="permissions.html">
+        <button class ="button log-button">Log Data</button>
+      </a>
+      <br> <br>
+      <a href="">
+        <button class ="button secondary-button">See Data</button>
+      </a>
+      <br> <br>
+      <a href="">
+        <button class ="button secondary-button">Create Profile</button>
+      </a>
+      <br> <br>
+      <img src="images/leaf.png" alt="Hannon Psychology Logo" style = "width:50px;">
+    </div>
     
-    <!--Location-->
-    <h1>Click the button to get your coordinates.</h1>
-    <button onclick="getLocation()">Update Location</button>
-    <p id="location"></p>
-
-    <!--Pressure-->
-    <h1>Test Pressure</h1>
-    <div class="touchTarget" id="el1">0</div>
-
-    <!--Map-->
-    <h1>Map</h1>
-    <div id='map' style='width: 400px; height: 300px;'></div>
-    
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="pressure/dist/pressure.js"></script>
-    <script type="text/javascript" src="pressure/dist/jquery.pressure.js"></script>
-    <script src ="keys.js"></script>
-    <script src ="main.js"></script>
   </body>
 </html>
