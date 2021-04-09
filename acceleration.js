@@ -47,7 +47,14 @@ function getAccel() {
   }
 }
 
+//hide button when clicked
+var button = document.getElementById('accel-button')
+button.addEventListener('click',hideshow,false);
 
+function hideshow() {
+  document.getElementById('button-container').style.display = 'block'; 
+  this.style.display = 'none'
+}
 
 //--------UPDATE BACKGROUND--------------------------------
 var min_accel = 0;
@@ -62,14 +69,9 @@ function updateColor(max_shake) {
 
 
   //change background to match
-  document.body.style.background = percentToColor(pct);  
-  document.getElementById("accel-content1").style.color = '#EEEEEE';
-  document.getElementById("accel-content1").style.background = percentToColor(pct);
-  document.getElementById("accel-content2").style.background = percentToColor(pct);
-  document.getElementById("accel-content3").style.background = percentToColor(pct);
-  document.getElementById("accel-content4").style.background = percentToColor(pct);
-  document.getElementById("accelMessage").style.background = percentToColor(pct);
-  document.getElementById("accelVar").style.background = percentToColor(pct);
+  document.body.style.background = percentToColor(pct);
+  //change header text to be white so still legible  
+  document.getElementById("header").style.color = '#EEEEEE';
 }
 
 //turns the force(range 0-1) to a hex color from green to yellow to red

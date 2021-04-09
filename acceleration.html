@@ -16,15 +16,17 @@
 
   <body>
 
-    <h1 id = "accel-content1">Know Your Stress</h1>
+    <h1 id = "header">Know Your Stress</h1>
     <br>
     <br>
-    <p id = "accel-content2" class = directions>After pressing button, shake your phone until the background color matches your stress</p>
+    <p class = directions>After pressing button, shake your phone until the background color matches your stress</p>
 
     <!--Accel-->
-    <p id = "accel-content3">Press button when ready, give permission, and start shaking!</p>
-    <div id = "accel-content4" class = "center-text">
-      <button class = "button primary-button" onclick="getAccel()">I'm Ready</button>
+    <p>Press button when ready, give permission, and start shaking!</p>
+    <div class = "center-text">
+      <div id = "button-container">
+        <button id = "accel-button" class = "button primary-button" onclick="getAccel()">I'm Ready</button>
+      </div>
       <p id="accelMessage"></p>
       <p id="accelVar"></p>
     </div>
