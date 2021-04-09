@@ -16,21 +16,19 @@
 
   <body>
     <h1>Know Your Stress</h1>
-    <p>In order to properly record your data you must first grant the site access to your location and accelerometer data. </p>
-    <p class = directions>Please press the button below and allow any requests to proceed.</p>
-    
-    <div class=circle></div>
-    <div class = "center-text">
-      <a href="touch-target.html">
-        <button id = "perm-button" class ="button primary-button">Give Permissions</button>
-      </a>
-    </div>
+    <br>
+    <br>
+    <p class = directions>Press and hold the button below to log stress</p>
+    <br>
+
+    <!--Pressure-->
+    <div class="touchTarget" id="el1">Press Here!</div>
     
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="pressure/dist/pressure.js"></script>
     <script type="text/javascript" src="pressure/dist/jquery.pressure.js"></script>
     <script src ="keys.js"></script>
-    <script src ="main.js"></script>
+    <script src ="touch-target.js"></script>
   </body>
 </html>

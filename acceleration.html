@@ -15,22 +15,25 @@
   </head>
 
   <body>
-    <h1>Know Your Stress</h1>
-    <p>In order to properly record your data you must first grant the site access to your location and accelerometer data. </p>
-    <p class = directions>Please press the button below and allow any requests to proceed.</p>
-    
-    <div class=circle></div>
-    <div class = "center-text">
-      <a href="touch-target.html">
-        <button id = "perm-button" class ="button primary-button">Give Permissions</button>
-      </a>
+
+    <h1 id = "accel-content1">Know Your Stress</h1>
+    <br>
+    <br>
+    <p id = "accel-content2" class = directions>After pressing button, shake your phone until the background color matches your stress</p>
+
+    <!--Accel-->
+    <p id = "accel-content3">Press button when ready, give permission, and start shaking!</p>
+    <div id = "accel-content4" class = "center-text">
+      <button class = "button primary-button" onclick="getAccel()">I'm Ready</button>
+      <p id="accelMessage"></p>
+      <p id="accelVar"></p>
     </div>
-    
+
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="pressure/dist/pressure.js"></script>
     <script type="text/javascript" src="pressure/dist/jquery.pressure.js"></script>
     <script src ="keys.js"></script>
-    <script src ="main.js"></script>
+    <script src ="acceleration.js"></script>
   </body>
 </html>
