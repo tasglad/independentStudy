@@ -16,14 +16,13 @@
 
   <body>
     <h1>Know Your Stress</h1>
-    <p>In order to properly record your data you must first grant the site access to your location and accelerometer data. </p>
+    <p>In order to properly record your data you must first grant the site access to your location. </p>
     <p class = directions>Please press the button below and allow any requests to proceed.</p>
     
     <div class=circle></div>
     <div class = "center-text">
-      <a href="touch-target.html">
-        <button id = "perm-button" class ="button primary-button">Give Permissions</button>
-      </a>
+      <button id = "perm-button" class ="button primary-button" onclick="getLocation()">Give Permissions</button>
+      <p id = "location"></p>
     </div>
     
 

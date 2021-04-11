@@ -52,9 +52,17 @@ var button = document.getElementById('accel-button')
 button.addEventListener('click',hideshow,false);
 
 function hideshow() {
+  //hide show
   document.getElementById('button-container').style.display = 'block'; 
   this.style.display = 'none'
+
+  setTimeout(function(){
+
+  }, 5000);
 }
+
+//after button clicked, start the 5 second timer.
+//button.addEventListener('click',setTimeout(functionName, 5000),false);
 
 //--------UPDATE BACKGROUND--------------------------------
 var min_accel = 0;
