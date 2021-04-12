@@ -20,15 +20,34 @@
     <br>
     <br>
     <p class = directions>After pressing button, shake your phone until the background color matches your stress</p>
+    <p id = "location"></p>
 
     <!--Accel-->
     <p>Press button when ready, give permission, and start shaking!</p>
     <div class = "center-text">
+      <p id="accelMessage" class = "error"></p>
       <div id = "button-container">
         <button id = "accel-button" class = "button primary-button" onclick="getAccel()">I'm Ready</button>
       </div>
-      <p id="accelMessage"></p>
       <p id="accelVar"></p>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Your Stress Level:</h1>
+        <p id="stress-level" style="font-size: 42px"></p>
+
+        <div class="center-text">
+          <button id = "try-again" class ="button secondary-button">Try Again</button>
+          <button class ="button primary-button">SAVE</button>  
+        </div>
+
+        <p class="directions">Your location is</p>
+        <p id="lat-text"></p>
+        <p id="long-text"></p>
+      </div>
     </div>
 
 
@@ -36,6 +55,9 @@
     <script type="text/javascript" src="pressure/dist/pressure.js"></script>
     <script type="text/javascript" src="pressure/dist/jquery.pressure.js"></script>
     <script src ="keys.js"></script>
-    <script src ="acceleration.js"></script>
+    <script src ="modal-login.js"></script>
+    <script src ="location.js"></script>
+    <script src ="accel-logging.js"></script>
+    <script src ="color-gradients.js"></script>
   </body>
 </html>

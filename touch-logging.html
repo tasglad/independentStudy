@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+    <title>Know Your Stress</title>
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+
+  <body>
+    <!--Text and Directions-->
+    <h1>Know Your Stress</h1>
+    <br>
+    <br>
+    <p class = directions>Press and hold the button below until the color matches your stress level</p>
+    <p id = "location"></p>
+    <br>
+
+    <!--Pressure-->
+    <div class="touchTarget" id="el1">Press Here!</div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Your Stress Level:</h1>
+        <p id="stress-level" style="font-size: 42px"></p>
+
+        <div class="center-text">
+          <button id = "try-again" class ="button secondary-button">Try Again</button>
+          <button class ="button primary-button">SAVE</button>  
+        </div>
+
+        <p class="directions">Your location is</p>
+        <p id="lat-text"></p>
+        <p id="long-text"></p>
+      </div>
+    </div>
+    
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="pressure/dist/pressure.js"></script>
+    <script type="text/javascript" src="pressure/dist/jquery.pressure.js"></script>
+    <script src ="keys.js"></script>
+    <script src ="modal-login.js"></script>
+    <script src ="location.js"></script>
+    <script src ="touch-logging.js"></script>
+    <script src ="color-gradients.js"></script>
+  </body>
+</html>
