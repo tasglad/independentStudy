@@ -1,33 +1,32 @@
-// Get the modal
-var modal = document.getElementById("myModal");
-var stressText = document.getElementById("stress-level");
-var latText = document.getElementById("lat-text");
-var longText = document.getElementById("long-text");
-var tryAgain = document.getElementById("try-again");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//Get HTML elements
+var modal = document.getElementById("myModal"); // Get the modal
+var span = document.getElementsByClassName("close")[0]; // Get the <span> element that closes the modal
+var cancel_bttn = document.getElementById("cancel-login"); //Get the Cancel button;
+var login_bttn = document.getElementById("login-button"); //Get the Login button;
+
+var nextPage = "see-data.html"; //go to map after logging in
+
 
 // When the user clicks on the button, open the modal
-//lat an lon coordinates and stress given as a number 0-10
-function openModal(lat,long,stress) {
+function openLogInModal() {
   //open
   modal.style.display = "block";
-  
-  //fill in info
-  stressText.innerHTML = stress + " out of 10";
-  latText.innerHTML = "Latitude: " + lat;
-  longText.innerHTML = "Longtitude: " + long;
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
+  window.history.back();
+}
+
+// When the user clicks on cancel, go to home;
+cancel_bttn.onclick = function(){
   modal.style.display = "none";
 }
 
-// When the user clicks on try again, refresh the site
-tryAgain.onclick = function(){
-  window.location.reload(false);
+// When the user clicks login, go to map;
+login_bttn.onclick = function(){
+  window.location.href(nextPage); 
 }
 
 // When the user clicks anywhere outside of the modal, close it

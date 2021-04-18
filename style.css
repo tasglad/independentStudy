@@ -29,6 +29,16 @@ p {
   padding-right: 10%;
 }
 
+form {
+  color: #444444;
+  font-weight: 500;
+}
+
+input {
+  height: 25px;
+  border-radius: 1em;
+}
+
 .error {
   background-color: red;
   color: white;
@@ -75,6 +85,18 @@ a:visited {
   border-style: solid;
 }
 
+.flex-parent {
+  display: flex;
+}
+
+.jc-center{
+  justify-content: center;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}
+
 .circle {
   background-color:white;
   border-radius: 50%;
@@ -90,7 +112,6 @@ a:visited {
   top: -190px;
 }
 
-
 #map {
   height: 100%;
 }
@@ -99,6 +120,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 
 .touchTarget {
   user-select: none; 

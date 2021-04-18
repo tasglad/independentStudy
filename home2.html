@@ -29,7 +29,7 @@
         <button class ="button primary-button">Log Data</button>
       </a>
       <br> <br>
-      <a href="">
+      <a href="see-data.html">
         <button class ="button secondary-button">See Data</button>
       </a>
       <br> <br>
@@ -37,8 +37,33 @@
         <button class ="button secondary-button">Create Profile</button>
       </a>
       <br> <br>
-      <img src="images/leaf.png" alt="Hannon Psychology Logo" style = "width:50px;">
+      <img src="leaf.png" alt="Hannon Psychology Logo" style = "width:50px;">
     </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Log In to your Account:</h1>
+        
+        <form class="center-text">
+          <label for="uname">Username:</label><br>
+          <input type="text" id="uname" name="uname"><br>
+          <br>
+          <label for="pass">Password:</label><br>
+          <input type="password" id="pass" name="pass">
+        </form>
+        <br> <br>
+
+        <div class="flex-parent jc-center">
+          <button id = "cancel-login" class ="button secondary-button margin-right">Cancel</button>
+          <button id = "login-button" class ="button primary-button">Log In</button>  
+        </div>
+
+      </div>
+    </div>
+
+    <script src ="modal-login.js"></script>
     
   </body>
 </html>
