@@ -121,6 +121,12 @@ html, body {
   padding: 0;
 }
 
+#seconds-counter {
+  font-size: 36pt;
+  font-weight: bold;
+  color: #EEEEEE;
+}
+
 
 .touchTarget {
   user-select: none; 
@@ -160,6 +166,7 @@ html, body {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 1em;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 

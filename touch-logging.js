@@ -9,8 +9,6 @@ getUsersLocation();
 
 //declare variables
 var stress;
-var lat = sessionStorage.getItem("lat");
-var long = sessionStorage.getItem("long"); 
 
 //--------------SET-UP TOUCH TARGET-------------------
 //----------------------------------------------------
@@ -21,10 +19,13 @@ var block = {
 
   change: function(force, event) {
     // event.preventDefault();
+
+    //change size of element based on force
     this.style.width = Pressure.map(force, 0, 1, 200, 300) + 'px';
     this.style.height = Pressure.map(force, 0, 1, 200, 300) + 'px';
 
-    this.innerHTML = String(Math.round(force*100)) + '%';
+    //update number displayed on circle and record stress
+    this.innerHTML = String(Math.round(force*10));
     console.log('change', force);
     stress = Math.round(force*10);
 
@@ -49,7 +50,7 @@ var block = {
     this.style.backgroundColor = '#00AF65';
 
     //trigger popup
-    openModal(lat,long,stress);
+    openModal(sessionStorage.getItem("lat"),sessionStorage.getItem("long"),stress);
   },
 
   unsupported: function() {

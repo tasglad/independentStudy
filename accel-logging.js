@@ -7,15 +7,16 @@ getUsersLocation();
 
 //declare variables
 var stress;
-var lat = sessionStorage.getItem("lat");
-var long = sessionStorage.getItem("long");
 
-var noErrors = true;
+var noErrors = true; // turned false if acceleration doesnt work
 
-var shake_thresh;
-var curr_shake;
+var shake_thresh; //"maximum" acceleration that will map to 100%
+var curr_shake; //accel currently read
 var accel_event;
 var max_shake = -1; //initiate as negative so we know when shaking starts
+
+var seconds = 6; //number of seconds before popup appears
+
 
 //--------SET-UP AND READ ACCEL--------------------------------
 function getAccel() {
@@ -30,7 +31,6 @@ function getAccel() {
           //start listening
           window.addEventListener('devicemotion', (event) => {
             //get accel
-            document.getElementById("accelVar").innerHTML = "listener here";
             accel_event = event.acceleration;
             curr_shake = Math.abs(accel_event.x)+Math.abs(accel_event.y)+Math.abs(accel_event.z);
             
@@ -39,8 +39,8 @@ function getAccel() {
               max_shake = curr_shake;
             }
 
-            //update page
-            document.getElementById("accelVar").innerHTML = max_shake;
+            //uncomment if you want the page to display accel: update page
+            //document.getElementById("accelVar").innerHTML = max_shake;
 
             //Update background color
             updateColor(max_shake);
@@ -56,14 +56,33 @@ function getAccel() {
   }
 }
 
-//hide button when clicked
-var button = document.getElementById('accel-button')
+//After I'm ready button is clicked, hide and start countdon
+var button = document.getElementById('accel-button') //I'm ready button
 button.addEventListener('click',hideshow,false);
 
+var countdown = document.getElementById('seconds-counter'); //countdown
+var myCounter;
+
+//triggered when "I'm ready" button is clicked
 function hideshow() {
-  //hide show
+  //hide the button
   document.getElementById('button-container').style.display = 'block'; 
   this.style.display = 'none'
+
+  //show countdown
+  if(noErrors){
+    //repeat every second
+    myCounter = setInterval(function(){
+      seconds -= 1;
+      countdown.innerText = seconds; //show on screen
+
+      //once countdown is done, cancel countdown
+      if(seconds == 0){
+        clearInterval(myCounter); // cancel countdown
+        countdown.innerText = "";
+      }
+    },1000) //repeat every second
+  }
 
   //after button clicked start 5 second timer before popping up log in
   //only if no error though
@@ -71,8 +90,8 @@ function hideshow() {
     setTimeout(function(){
       //set acceleration to range 0-1 then transform into integer 1-10
       stress = Math.round(maptoRange(max_shake)*10);
-      openModal(lat,long,stress);
-    }, 5000);
+      openModal(sessionStorage.getItem("lat"),sessionStorage.getItem("long"),stress);
+    }, seconds*1000);
   }
 }
 

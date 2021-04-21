@@ -21,9 +21,10 @@ function openModal(lat,long,stress) {
   longText.innerHTML = "Longtitude: " + long;
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), refresh the site
 span.onclick = function() {
-  modal.style.display = "none";
+  //modal.style.display = "none"; //if we wanted modal to just close
+  window.location.reload(false);
 }
 
 // When the user clicks on try again, refresh the site
