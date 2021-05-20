@@ -2,7 +2,7 @@
 
 //--------SET-UP MAP--------------------------------
 //stress data location
-stressDataFile = './data/fake_stress_data.geojson';
+stressDataFile = './data/fake_stress_data2.geojson';
 
 //get Mapbox api key from external file
 let api_key = getKey();
@@ -175,17 +175,68 @@ map.on('load', function() {
       }
     }
   }, 'waterway-label');
+
+  //apply filters for testing
+  //NOTE cannot use these in conjunction, need to use 'all' keyword to chain filters
+  //for future: have to rework these filters.
+  // filterByHot(7); //stress higher or equal to 7
+  // filterByCold(3); //stress lower than or equal to 3
+  // sliderByTime(9); //filters by hours 8am-10am.
+
 });
 
 //click point to view popup of logged stress level
 map.on('click', 'stress-point', function(e) {
+  console.log(e.features[0]);
   new mapboxgl.Popup()
     .setLngLat(e.features[0].geometry.coordinates)
-    .setHTML('<b>Stress:</b> ' + e.features[0].properties.stress + ' out of 10')
+    .setHTML('<b>Stress:</b> ' + e.features[0].properties.stress + ' out of 10 <br> <b>Time:</b> ' + 
+      e.features[0].properties.time + '<br><b>Date</b>: ' + e.features[0].properties.date )
     .addTo(map);
 });
 
+//-------FILTERS-------
+//here are some filters I used to generate images for my figma prototype
 
+//only show hotspots with a stress higher than cutoff
+function filterByHot(cutoff) {
+  var filters = ['>=', 'stress', cutoff];
+  map.setFilter('stress-point', filters);
+  map.setFilter('stress-heat', filters);
+}
+
+//only show coldspots with a stress lower than cutoff
+function filterByCold(cutoff) {
+  var filters = ['<=', 'stress', cutoff];
+  map.setFilter('stress-point', filters);
+  map.setFilter('stress-heat', filters);
+}
+
+//only show times for an hour on either side (given 7am will show between 6am-8am)
+//input taken in string in form "3:00", 24 hour time
+//MIGHT HAVE TO FIX THIS DEPENDING ON HOW TIME DATA IS FORMATTED 
+function sliderByTime(hour) {
+  //handle edge cases
+  if(hour == 0 || hour == 24){
+    var filters = ['all',
+      ['<=', 'stress', 0], //just 12am-1am
+      ['>=', 'stress', 23] // just 11pm-12am
+    ]; 
+  }
+  else{ // when hours dont wrap
+    var filters = ['all',
+    ['>=', 'hour', hour-1], //for 3am gives back 2am +
+    ['<=', 'hour', hour] //for 3am gives back till 4am
+  ];
+  }
+  
+  //apply filters
+  map.setFilter('stress-point', filters);
+  map.setFilter('stress-heat', filters);
+}
+
+
+//-------HELPER FUNCTIONS-------
 //helper function to load json file in code
 function loadJSON(callback) {   
   var xobj = new XMLHttpRequest();
@@ -197,4 +248,9 @@ function loadJSON(callback) {
     }
   };
   xobj.send(null);  
+}
+
+//helper function to pull out hour of time in 24 hour
+function get24Hour(time){
+  console.log(time[0]);
 }

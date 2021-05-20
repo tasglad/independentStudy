@@ -19,7 +19,6 @@ var block = {
 
   change: function(force, event) {
     // event.preventDefault();
-
     //change size of element based on force
     this.style.width = Pressure.map(force, 0, 1, 200, 300) + 'px';
     this.style.height = Pressure.map(force, 0, 1, 200, 300) + 'px';

@@ -3,7 +3,7 @@
 data = readtable('fake_stress_data.csv');
 
 %open file for writing
-fileID = fopen('fake_stress_data.geojson','w');
+fileID = fopen('fake_stress_data2.geojson','w');
 
 %opener print
 fprintf(fileID,'{"type":"FeatureCollection","features":[');
@@ -14,7 +14,11 @@ for i = 1:numRows
     %stress
     fprintf(fileID,'{"stress":%0.0f,',data.StressLevel(i));
     %time
-    fprintf(fileID,' "time":"%s"},\n',data.Time{i});
+    fprintf(fileID,' "time":"%s", ',data.Time{i});
+    %hour
+    fprintf(fileID,' "hour":%0.0f, ',data.Hour(i));
+    %date
+    fprintf(fileID,' "date":"%s"},\n',data.Date(i));
     %coordiantes
     fprintf(fileID,' "geometry": {"type": "Point", "coordinates": ');
     fprintf(fileID,'[%f,%f]}}',data.Longtitude(i),data.Latitude(i));

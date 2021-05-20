@@ -56,7 +56,7 @@ function getAccel() {
   }
 }
 
-//After I'm ready button is clicked, hide and start countdon
+//After I'm ready button is clicked, hide button and start countdon
 var button = document.getElementById('accel-button') //I'm ready button
 button.addEventListener('click',hideshow,false);
 
@@ -111,6 +111,9 @@ function maptoRange(max_shake){
 function updateColor(max_shake) {
   //scale shake to a percent (accel range 0-150, map to 0-1)
   pct = maptoRange(max_shake);
+  if (pct > 1){
+    pct = 1; //if above max cut off at 1
+  }
 
   //change background to match
   document.body.style.background = percentToColor(pct); //function in color-gradients.js
