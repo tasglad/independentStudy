@@ -1,7 +1,12 @@
-
+//see-data.js
+//holds all the JavaScript for the see-data.html page
+//references MapBox to see the map, and accesses data to show stress data
+//Written by Taissa Gladkova 4/9/21
 
 //--------SET-UP MAP--------------------------------
-//stress data location
+
+//stress data (will have to be changed to a data stream eventually)
+//meant to be each individual person's data
 stressDataFile = './data/fake_stress_data2.geojson';
 
 //get Mapbox api key from external file
@@ -64,7 +69,7 @@ map.on('load', function() {
     'source': 'stress',
     'maxzoom': 15,
     'paint': {
-      // increase weight as stress increases
+      // increase weight as stress increases [stress,weight]
       'heatmap-weight': {
         'property': 'stress',
         //'type': 'exponential',
@@ -77,7 +82,7 @@ map.on('load', function() {
         ]
       },
 
-      // increase intensity as zoom level increases
+      // increase intensity as zoom level increases [zoom,intensity]
       'heatmap-intensity': {
         'stops': [
           [5,1],
@@ -88,6 +93,7 @@ map.on('load', function() {
       },
       
       // use sequential color palette to use exponentially as the weight increases
+      //NEEDS TO BE CHANGED TO MATCH GREEN TO RED not blue to red
       'heatmap-color': [
         'interpolate',
         ['linear'],
@@ -108,7 +114,7 @@ map.on('load', function() {
 
       // increase radius as zoom increases
       'heatmap-radius': {
-        'stops': [ //radius in pixels, based on zoom level
+        'stops': [ //radius in pixels, based on zoom level [zoom,pixels]
           [5,20],
           [10, 25],
           [15, 30],
@@ -200,14 +206,18 @@ map.on('click', 'stress-point', function(e) {
 
 //only show hotspots with a stress higher than cutoff
 function filterByHot(cutoff) {
+  //set up
   var filters = ['>=', 'stress', cutoff];
+  //aply
   map.setFilter('stress-point', filters);
   map.setFilter('stress-heat', filters);
 }
 
 //only show coldspots with a stress lower than cutoff
 function filterByCold(cutoff) {
+  //set up
   var filters = ['<=', 'stress', cutoff];
+  //apply
   map.setFilter('stress-point', filters);
   map.setFilter('stress-heat', filters);
 }
@@ -229,7 +239,6 @@ function sliderByTime(hour) {
     ['<=', 'hour', hour] //for 3am gives back till 4am
   ];
   }
-  
   //apply filters
   map.setFilter('stress-point', filters);
   map.setFilter('stress-heat', filters);

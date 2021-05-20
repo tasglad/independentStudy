@@ -1,3 +1,6 @@
+//modal-login.js
+//holds all the JavaScript for opening mmodal to login when clicking See Data on home
+//Written by Taissa Gladkova 4/9/21
 
 //Get HTML elements
 var modal = document.getElementById("myModal"); // Get the modal
@@ -24,7 +27,7 @@ cancel_bttn.onclick = function(){
   modal.style.display = "none";
 }
 
-// When the user clicks login, go to map;
+// When the user clicks login, go to map see data page;
 login_bttn.onclick = function(){
   window.location.href = nextPage; 
 }

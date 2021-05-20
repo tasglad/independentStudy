@@ -1,5 +1,5 @@
 //location.js
-//holds all the JavaScript for getting users location.
+//holds all the JavaScript for getting users location. Called by logging pages
 //Written by Taissa Gladkova 4/9/21
 
 

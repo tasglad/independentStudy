@@ -1,3 +1,7 @@
+//modal-report.js
+//holds all the JavaScript for opening mmodal that reports stress after logging
+//Written by Taissa Gladkova 4/9/21
+
 // Get the HTML elements
 var modal = document.getElementById("myModal");
 var stressText = document.getElementById("stress-level");
