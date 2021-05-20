@@ -6,7 +6,7 @@
 getUsersLocation();
 
 //declare variables
-var stress;
+var stress; //final stress number that is displayed out of 10
 
 var noErrors = true; // turned false if acceleration doesnt work
 
@@ -19,6 +19,7 @@ var seconds = 6; //number of seconds before popup appears
 
 
 //--------SET-UP AND READ ACCEL--------------------------------
+//sets up listener and runs logging. Called when "I'm ready" button is pressed
 function getAccel() {
   // feature detect (see if exists on this device)
   try {
@@ -56,7 +57,7 @@ function getAccel() {
   }
 }
 
-//After I'm ready button is clicked, hide button and start countdon
+//After I'm ready button is clicked, call hideshow: hiding button and starting countdown
 var button = document.getElementById('accel-button') //I'm ready button
 button.addEventListener('click',hideshow,false);
 
@@ -108,6 +109,7 @@ function maptoRange(max_shake){
   return min_pct + slope * (max_shake - min_accel);
 }
 
+//updates background color to match the current max_shake
 function updateColor(max_shake) {
   //scale shake to a percent (accel range 0-150, map to 0-1)
   pct = maptoRange(max_shake);
