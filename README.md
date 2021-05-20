@@ -1,6 +1,6 @@
 # Know Your Stress: Stress Logging + Visualization App
 
-This project was written for my Independent Study, supervised by Professor Hannon. For an overview of the project see [Tasia_IndependentStudy_Poster.pdf](https://github.com/tasglad/independentStudy/blob/master/Tasia_IndpendentStudy_Poster.pdf) in the documentation folder.
+This project was written for my Independent Study, supervised by Professor Hannon. For an overview of the project see [Tasia_IndependentStudy_Poster.pdf](https://github.com/tasglad/independentStudy/blob/master/documentation/Tasia_IndependentStudy_Poster.pdf) in the documentation folder.
 
 ## External Mock-Up
 I also worked on a more fleshed out UI for the "See Data" functionality. The prototype can be found [here](https://www.figma.com/proto/oCX6KgGzQCcbEyUQhFq2ee/IndependentStudy?node-id=27%3A0&scaling=scale-down&page-id=26%3A0).
@@ -18,7 +18,7 @@ I also worked on a more fleshed out UI for the "See Data" functionality. The pro
 
 * *pressure* folder was cloned from [this GitHub](https://github.com/stuyam/pressure), whose website can be found at [pressurejs.com](https://pressurejs.com/). This is the library for using the pressure sensor in data logging. This is not linked to their GitHub and would have to be updated manually. 
 
-* The rest of the loose files (Here, all the js files associated with a specific html file are named the same thing. I suggest looking at [this diagram]() to get a better idea of how these files are connected):
+* The rest of the loose files (Here, all the js files associated with a specific html file are named the same thing. I suggest looking at [this diagram](https://github.com/tasglad/independentStudy/blob/master/documentation/Tasia_IndependentStudy_Diagram.pdf) to get a better idea of how these files are connected):
   * *accel-logging.html* 
     * The page where the user logs their acceleration data inlcuding the modal that pops up, prompting them to log in.
   * *accel-logging.js* 
