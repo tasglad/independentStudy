@@ -2,8 +2,10 @@
 
 This project was written for my Independent Study, supervised by Professor Hannon. For an overview of the project see [Tasia_IndependentStudy_Poster.pdf](https://github.com/tasglad/independentStudy/blob/master/documentation/Tasia_IndependentStudy_Poster.pdf) in the documentation folder.
 
-## External Mock-Up
+## External Links
 I also worked on a more fleshed out UI for the "See Data" functionality. The prototype can be found [here](https://www.figma.com/proto/oCX6KgGzQCcbEyUQhFq2ee/IndependentStudy?node-id=27%3A0&scaling=scale-down&page-id=26%3A0).
+
+I use the MapBox API, which has great documentatino that can be found [here](https://docs.mapbox.com/mapbox-gl-js/api/).
 
 ## File Overview
 * *documentation* folder contains informational material about the project, including the poster for my presentation as well as a diagram of the file structure.
